@@ -12,7 +12,7 @@ const main = function () {
     .then((items) => {
       console.log(items[0]);
       const item = items[0];
-      return api.updateItem(item.id, { name: 'foobar' });
+      return api.updateItem(item.id, { name: 'fred' , checked: true });
     })
     .then(res => res.json())
     .then(() => console.log('updated!'));

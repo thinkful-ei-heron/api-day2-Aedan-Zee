@@ -23,10 +23,10 @@ const updateItem = function (id, updateData) {
   console.log(bodyInfo);
   return fetch(`${BASE_URL}/items/${id}`, {
     'method': 'PATCH',
-    'header': {
+    'headers': {
       'Content-Type': 'application/json'
     },
-    'body': 'bodyInfo'
+    'body': bodyInfo
   });
 };
 
