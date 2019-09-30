@@ -1,7 +1,6 @@
-import item from './item';
-
 const items = [];
 let hideCheckeditems = false;
+let error = null;
 
 const findById = function (id) {
   return this.items.find(currentItem => currentItem.id === id);
@@ -25,6 +24,7 @@ const toggleCheckedFilter = function () {
   this.hideCheckedItems = !this.hideCheckedItems;
 };
 
+
 export default {
   items,
   hideCheckeditems,
@@ -32,5 +32,6 @@ export default {
   addItem,
   findAndDelete,
   toggleCheckedFilter,
-  findAndUpdate
+  findAndUpdate,
+  error
 };
