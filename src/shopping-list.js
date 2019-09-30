@@ -39,21 +39,20 @@ const render = function() {
   }
 
   if(store.error !== null) {
-    console.log('hey');
-    $('#js-error-message').html(`<p>Sorry about that: ${store.error.message}</p>`);
-  }
+    $('#js-error-message').html(`<p>Sorry about that: ${store.error}</p>`);
+  } else $('#js-error-message').empty();
 
   // render the shopping list in the DOM
   const shoppingListItemsString = generateShoppingItemsString(items);
 
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
-  store.error = null;
 };
 
-const setError = function(error) {
-  console.log(error);
-  store.error = `Sorry about that: ${error.message}`;
+const setError = function(e) {
+  store.error = `${e.message}`;
+  render();
+  store.resetError();
 };
 
 const handleNewItemSubmit = function() {
@@ -85,12 +84,11 @@ const handleDeleteItemClicked = function() {
     // delete the item
     api.deleteItem(id)
     .then( response => {
-      store.findAndDelete(response);
+      console.log(response);
+      store.findAndDelete(id);
       render();
     })
     .catch(e => setError(e));
-    
-    
   });
 };
 

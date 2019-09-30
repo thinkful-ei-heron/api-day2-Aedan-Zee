@@ -1,4 +1,4 @@
-const BASE_URL = 'https://thinkful-list-api.herokuapp.com/lazandrea';
+const BASE_URL = 'https://thinkful-list-api.herokuapp.com/zee';
 
 const getItems = function () {
   return fetchWrapper(`${BASE_URL}/items`);
@@ -41,13 +41,13 @@ const fetchWrapper = function (...args) {
   return fetch(...args)
   .then(resp => {
     if(!resp.ok) {
-      console.log(resp);
-      error.message = resp.message;
+      error = {code: resp.status};
     }
     return resp.json();
   })
   .then(respJson => {
     if(error) {
+      error.message = respJson.message;
       return Promise.reject(error);
     }
     return respJson;

@@ -12,11 +12,11 @@ const addItem = function (newItem) {
 
 const findAndUpdate = function (id, newData) {
   let findId = this.findById(id);
-  console.log(findId);
   Object.assign(findId, newData);
 };
 
 const findAndDelete = function (id) {
+  console.log(id);
   this.items = this.items.filter(currentItem => currentItem.id !== id);
 };
 
@@ -24,6 +24,9 @@ const toggleCheckedFilter = function () {
   this.hideCheckedItems = !this.hideCheckedItems;
 };
 
+const resetError = function () {
+  this.error = null;
+}
 
 export default {
   items,
@@ -33,5 +36,6 @@ export default {
   findAndDelete,
   toggleCheckedFilter,
   findAndUpdate,
-  error
+  error,
+  resetError
 };
