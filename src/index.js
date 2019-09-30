@@ -4,10 +4,10 @@ import 'normalize.css';
 import './index.css';
 
 import shoppingList from './shopping-list';
+import store from './store';
 
 const main = function() {
-  api.getItems().then(res => console.log(res));
-  console.log(api.BASE_URL);
+
   shoppingList.bindEventListeners();
   shoppingList.render();
 };
